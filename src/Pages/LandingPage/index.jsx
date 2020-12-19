@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Holder, BookDisplay} from "./style"
 import axios from "axios";
+import Menu from "../../components/menu/index"
 
 const LandingPage = () => {
     const [crimeBooks, setCrimeBooks] = useState();
@@ -11,7 +12,9 @@ const LandingPage = () => {
     romanceBooks === undefined && axios.get("https://www.googleapis.com/books/v1/volumes?q=amor&maxResults=5")
     .then((res) => setRomanceBooks(res.data.items))
 
-    return <Holder>
+    return <>
+    <Menu />
+    <Holder>
         <h1>BookBooks</h1>
         <p>Crime</p>
         <BookDisplay>
@@ -26,6 +29,7 @@ const LandingPage = () => {
             ))}
         </BookDisplay>
     </Holder>
+    </>
 }
 
 export default LandingPage;
